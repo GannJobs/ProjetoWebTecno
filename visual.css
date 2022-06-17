@@ -31,12 +31,32 @@ body{
     background-color: rgb(33, 145, 22);
 }
 
+.ativo {
+    position: relative;
+}
+
+.ativo::before{
+    --tam: -5px;
+    content: "";
+    position: absolute;
+    top: var(--tam);
+    bottom: var(--tam);
+    left: var(--tam);
+    right: var(--tam);
+    z-index: -1;
+    background-color: blueviolet;
+}
+
+.Casa2.ativo::before{
+    background-color: tomato;
+}
+
 .Linha {
     display: flex;
     gap: 10px;
 }
 
-circle{
+circle {
     display: inline-block;
     width: 60%;
     height: 60%;
