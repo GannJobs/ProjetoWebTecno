@@ -88,12 +88,14 @@ function mov(evento, extra) {
 }
 
 function movV(evento) {
-    if ((evento.target.className.includes("Casa2") || (evento.target.className.includes("Casa sobreposto")))) {
+    if ((evento.target.className.includes("Casa2") || evento.target.className == "Casa sobreposto") 
+    /*&& (origem.style.backgroundColor == evento.target.style.backgroundColor)*/) {
 
         mov(evento, "Verdes")
 
-    } else if (origem.className.includes("Casa sobreposto") && (evento.target.className.includes("Casa2")
-        || evento.target.className.includes("Casa sobreposto"))) {
+    } else if ((origem.className == "Casa sobreposto" || origem.className.includes("Casa2")) 
+    && (evento.target.className == "Casa Casa2" || evento.target.className == "Casa sobreposto")
+        /* && (origem.style.backgroundColor == evento.target.style.backgroundColor)*/) {
 
         mov(evento, "Verdes")
 
@@ -105,12 +107,14 @@ function movV(evento) {
 
 function movP(evento) {
     if (origem.className.includes("Casa Casa2 sobreposto") || (!(evento.target.className.includes("Casa2"))
-        || evento.target.className.includes("Casa Casa2 sobreposto"))) {
+        || evento.target.className.includes("Casa Casa2 sobreposto"))
+         /*&& (origem.style.backgroundColor == evento.target.style.backgroundColor)*/) {
 
         mov(evento, "Pretas")
 
     } else if (origem.className.includes("Casa Casa2 sobreposto") && (!evento.target.className.includes("Casa2")
-        || evento.target.className.includes("Casa Casa2 sobreposto"))) {
+        || evento.target.className.includes("Casa Casa2 sobreposto"))
+         /*&& (origem.style.backgroundColor == evento.target.style.backgroundColor)*/) {
 
         mov(evento, "Pretas")
 
@@ -122,18 +126,18 @@ function movP(evento) {
 
 function movimento(event) {
     //Movimentação das verdes em casas normais e sobrepostas
-    if (origem.className.includes("Casa2") && event.target.className == "Casa Casa2") {
+    if (origem.className == "Casa Casa2" && event.target.className == "Casa Casa2") {
 
         console.log("verde normal")
         movV(event)
 
-    } else if ((origem.className.includes("Casa2") || (origem.className == "Casa sobreposto"))
-        && (event.target.className.includes("sobreposto"))) {
+    } else if (origem.className == "Casa Casa2" && ((event.target.className == "Casa sobreposto")
+        || event.target.className == "Casa Casa2")) {
 
         console.log("Verde => Preta->Verde")
         movV(event)
 
-    } else if (origem.className == "Casa sobreposto" && ((event.target.className.includes("Casa2"))
+    } else if (origem.className == "Casa sobreposto" && ((event.target.className == "Casa Casa2")
         || (event.target.className == "Casa sobreposto"))) {
 
         console.log("Preta->Verde => Preta->Verde || Verde")
@@ -142,18 +146,18 @@ function movimento(event) {
     } else
 
         //Movimentação das pretas em casas normais e sobrepostas
-        if (!origem.className.includes("Casa2") && event.target.className == "Casa") {
+        if (origem.className == "Casa" && event.target.className == "Casa") {
 
             console.log("preta normal")
             movP(event)
 
-        } else if ((!origem.className.includes("Casa2") || (origem.className == "Casa Casa2 sobreposto"))
-            && (event.target.className.includes("sobreposto"))) {
+        } else if (origem.className == "Casa" && ((event.target.className == "Casa Casa2 sobreposto")
+            || (event.target.className == "Casa"))) {
 
             console.log("Preta => Verde->Preta")
             movP(event)
 
-        } else if (origem.className == "Casa Casa2 sobreposto" && ((!event.target.className.includes("Casa2"))
+        } else if (origem.className == "Casa Casa2 sobreposto" && ((event.target.className == "Casa")
             || (event.target.className == "Casa Casa2 sobreposto"))) {
 
             console.log("Verde->Preta => Verde->Preta || Preta")
