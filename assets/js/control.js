@@ -23,17 +23,15 @@ for (casa of casas) {
 
             if (origem.id == event.target.id && !event.target.innerHTML && !origem.innerHTML) {
                 if (origem.getAttribute("t") == 0) {
-                    console.log("veio aqui")
                     Turn(event)
-                    turn++
                     sobrepor()
+                    turn++
                     origem = ""
                     return
-                } else if (origem.getAttribute("t") <= turn - 2) {
-                    console.log("ou veio aqui")
+                } else if (origem.getAttribute("t") < turn - 2) {
                     Turn(event)
-                    turn++
                     sobrepor()
+                    turn++
                     origem = ""
                     return
                 } else {
@@ -48,7 +46,7 @@ for (casa of casas) {
                 origem = ""
                 return alert("Não se pode passar nada para uma casa!")
 
-            } else {
+            } else if (!event.target.innerHTML){
 
                 Turn(event)
                 turn++
@@ -66,7 +64,7 @@ function sobrepor() {
             origem.setAttribute("t", turn)
             origem.classList.toggle("sobreposto")
         } else {
-            origem.setAttribute("t", "0")
+            origem.setAttribute("t", turn)
             origem.classList.toggle("sobreposto")
         }
     }
