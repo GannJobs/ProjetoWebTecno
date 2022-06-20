@@ -314,7 +314,7 @@ function vencerV() {
             window.location.href = "index.html"
             return alert("Pretas ganharam!")
         } else if ((casas[5].innerHTML) && (casas[11].innerHTML) && (casas[16].innerHTML)
-            && (casas[5].className == "Casa") && (casas[11].className == "Casa") && (casas[10].className == "Casa")) {
+            && (casas[5].className == "Casa") && (casas[11].className == "Casa") && (casas[16].className == "Casa")) {
             window.location.href = "index.html"
             return alert("Pretas ganharam!")
         } else if ((casas[9].innerHTML) && (casas[14].innerHTML) && (casas[17].innerHTML)
