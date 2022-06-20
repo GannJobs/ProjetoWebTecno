@@ -11,15 +11,7 @@ body{
     width: 100vw;
     gap: 50px;
     flex-direction: column;
-    /* perspective: 10em;
-    perspective-origin: 50% 50%; */
 }
-
-/* #cena{
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateX(45deg) rotateY(0deg) rotateZ(10deg);
-} */
 
 .Matriz {
     align-items: center;
@@ -81,22 +73,4 @@ circle {
     border-radius: 100%;
     background-color: blue;
     pointer-events: none;
-    /* transition: transform 1s ease; */
-}
-
-/* .ativo circle{
-    transform:  translateX(10px) translateY(10px) translateZ(10px);
-} */
-
-.Pextra {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 30px;
-    width: 30px;
-    background-color: black;
-}
-
-.Pextra2 {
-    background-color: rgb(33, 145, 22);
 }
