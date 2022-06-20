@@ -29,7 +29,7 @@ for (casa of casas) {
                     sobrepor()
                     origem = ""
                     return
-                } else if (origem.getAttribute("t") <= turn - 2){
+                } else if (origem.getAttribute("t") <= turn - 2) {
                     console.log("ou veio aqui")
                     Turn(event)
                     turn++
@@ -62,9 +62,9 @@ for (casa of casas) {
 function sobrepor() {
     let r = confirm("Deseja Trocar a Casa?")
     if (r) {
-        if(origem.getAttribute("t") == 0) {
-        origem.setAttribute("t", turn)
-        origem.classList.toggle("sobreposto")
+        if (origem.getAttribute("t") == 0) {
+            origem.setAttribute("t", turn)
+            origem.classList.toggle("sobreposto")
         } else {
             origem.setAttribute("t", "0")
             origem.classList.toggle("sobreposto")
@@ -77,9 +77,11 @@ function sobrepor() {
 function Turn(event) {
     if (turn % 2 == 1) {
         if (((origem.className == "Casa Casa2" || (origem.className == "Casa sobreposto" && origem.innerHTML))
-        && (event.target.className == "Casa Casa2" || event.target.className == "Casa sobreposto"))
-        || (!origem.innerHTML && !event.target.innerHTML)) {
+            && (event.target.className == "Casa Casa2" || event.target.className == "Casa sobreposto"))
+            || (!origem.innerHTML && !event.target.innerHTML)) {
             return
+        } else if ((origem.className == "Casa Casa2" || (origem.className == "Casa sobreposto") && !event.target.className.includes("Casa2"))) {
+            LimitMov(event)
         } else {
             origem = ""
             turn--
@@ -88,9 +90,11 @@ function Turn(event) {
         }
     } else if (turn % 2 == 0) {
         if (((origem.className == "Casa" || (origem.className == "Casa Casa2 sobreposto" && origem.innerHTML))
-        && (event.target.className == "Casa" || event.target.className == "Casa Casa2 sobreposto")) 
-        || ((!origem.innerHTML) && (!event.target.innerHTML))) {            
+            && (event.target.className == "Casa" || event.target.className == "Casa Casa2 sobreposto"))
+            || ((!origem.innerHTML) && (!event.target.innerHTML))) {
             return
+        } else if ((origem.className == "Casa" || (origem.className == "Casa Casa2 sobreposto") && event.target.className.includes("Casa2"))) {
+            LimitMov(event)
         } else {
             origem = ""
             turn--
