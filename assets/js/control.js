@@ -269,166 +269,166 @@ function vencerV() {
         //para as verdes
         if ((casas[1].innerHTML) && (casas[4].innerHTML) && (casas[0].innerHTML)
             && (casas[1].className == "Casa Casa2") && (casas[4].className == "Casa Casa2") && (casas[0].className == "Casa Casa2")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Verdes ganharam!")
         } else if ((casas[10].innerHTML) && (casas[6].innerHTML) && (casas[3].innerHTML)
             && (casas[10].className == "Casa Casa2") && (casas[6].className == "Casa Casa2") && (casas[3].className == "Casa Casa2")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Verdes ganharam!")
         } else if ((casas[15].innerHTML) && (casas[12].innerHTML) && (casas[8].innerHTML)
             && (casas[15].className == "Casa Casa2") && (casas[12].className == "Casa Casa2") && (casas[8].className == "Casa Casa2")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Verdes ganharam!")
         } else if ((casas[0].innerHTML) && (casas[3].innerHTML) && (casas[8].innerHTML)
             && (casas[0].className == "Casa Casa2") && (casas[3].className == "Casa Casa2") && (casas[8].className == "Casa Casa2")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Verdes ganharam!")
         } else if ((casas[1].innerHTML) && (casas[6].innerHTML) && (casas[12].innerHTML)
             && (casas[1].className == "Casa Casa2") && (casas[6].className == "Casa Casa2") && (casas[12].className == "Casa Casa2")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Verdes ganharam!")
         } else if ((casas[4].innerHTML) && (casas[10].innerHTML) && (casas[15].innerHTML)
             && (casas[4].className == "Casa Casa2") && (casas[10].className == "Casa Casa2") && (casas[15].className == "Casa Casa2")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Verdes ganharam!")
 
             //para as pretas
         } else if ((casas[2].innerHTML) && (casas[5].innerHTML) && (casas[9].innerHTML)
             && (casas[2].className == "Casa") && (casas[5].className == "Casa") && (casas[9].className == "Casa")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Pretas ganharam!")
         } else if ((casas[7].innerHTML) && (casas[11].innerHTML) && (casas[14].innerHTML)
             && (casas[7].className == "Casa") && (casas[11].className == "Casa") && (casas[14].className == "Casa")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Pretas ganharam!")
         } else if ((casas[13].innerHTML) && (casas[16].innerHTML) && (casas[17].innerHTML)
             && (casas[13].className == "Casa") && (casas[16].className == "Casa") && (casas[17].className == "Casa")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Pretas ganharam!")
         } else if ((casas[2].innerHTML) && (casas[7].innerHTML) && (casas[13].innerHTML)
             && (casas[2].className == "Casa") && (casas[7].className == "Casa") && (casas[13].className == "Casa")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Pretas ganharam!")
         } else if ((casas[5].innerHTML) && (casas[11].innerHTML) && (casas[16].innerHTML)
             && (casas[5].className == "Casa") && (casas[11].className == "Casa") && (casas[10].className == "Casa")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Pretas ganharam!")
         } else if ((casas[9].innerHTML) && (casas[14].innerHTML) && (casas[17].innerHTML)
             && (casas[9].className == "Casa") && (casas[14].className == "Casa") && (casas[17].className == "Casa")) {
-            window.location.href = "Index.html"
+            window.location.href = "index.html"
             return alert("Pretas ganharam!")
         } else
 
             //para as casas sobrepostas verdes
             if ((casas[1].innerHTML) && (casas[2].innerHTML) && (casas[3].innerHTML)
                 && (casas[2].className == "Casa sobreposto") && (casas[1].className == "Casa Casa2") && (casas[3].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[0].innerHTML) && (casas[2].innerHTML) && (casas[6].innerHTML)
                 && (casas[2].className == "Casa sobreposto") && (casas[0].className == "Casa Casa2") && (casas[3].className == "Casa Casa2")) {
                 console.log("chegou ue?")
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[1].innerHTML) && (casas[5].innerHTML) && (casas[10].innerHTML)
                 && (casas[5].className == "Casa sobreposto") && (casas[1].className == "Casa Casa2") && (casas[10].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[4].innerHTML) && (casas[5].innerHTML) && (casas[6].innerHTML)
                 && (casas[5].className == "Casa sobreposto") && (casas[4].className == "Casa Casa2") && (casas[6].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[5].innerHTML) && (casas[6].innerHTML) && (casas[7].innerHTML)
                 && (casas[5].className == "Casa sobreposto" && casas[7].className == "Casa sobreposto") && (casas[6].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[2].innerHTML) && (casas[6].innerHTML) && (casas[11].innerHTML)
                 && (casas[11].className == "Casa sobreposto" && casas[2].className == "Casa sobreposto") && (casas[6].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[3].innerHTML) && (casas[7].innerHTML) && (casas[12].innerHTML)
                 && (casas[7].className == "Casa sobreposto") && (casas[3].className == "Casa Casa2") && (casas[12].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[6].innerHTML) && (casas[7].innerHTML) && (casas[8].innerHTML)
                 && (casas[7].className == "Casa sobreposto") && (casas[6].className == "Casa Casa2") && (casas[8].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[5].innerHTML) && (casas[10].innerHTML) && (casas[14].innerHTML)
                 && (casas[5].className == "Casa sobreposto" && casas[14].className == "Casa sobreposto") && (casas[10].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[9].innerHTML) && (casas[10].innerHTML) && (casas[11].innerHTML)
                 && (casas[9].className == "Casa sobreposto" && casas[11].className == "Casa sobreposto") && (casas[10].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[6].innerHTML) && (casas[11].innerHTML) && (casas[15].innerHTML)
                 && (casas[11].className == "Casa sobreposto") && (casas[6].className == "Casa Casa2") && (casas[15].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[10].innerHTML) && (casas[11].innerHTML) && (casas[12].innerHTML)
                 && (casas[11].className == "Casa sobreposto") && (casas[10].className == "Casa Casa2") && (casas[12].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[7].innerHTML) && (casas[12].innerHTML) && (casas[16].innerHTML)
                 && (casas[7].className == "Casa sobreposto" && casas[16].className == "Casa sobreposto") && (casas[12].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[11].innerHTML) && (casas[12].innerHTML) && (casas[13].innerHTML)
                 && (casas[11].className == "Casa sobreposto" && casas[13].className == "Casa sobreposto") && (casas[12].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[11].innerHTML) && (casas[15].innerHTML) && (casas[17].innerHTML)
                 && (casas[11].className == "Casa sobreposto" && casas[17].className == "Casa sobreposto") && (casas[15].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[14].innerHTML) && (casas[15].innerHTML) && (casas[16].innerHTML)
                 && (casas[14].className == "Casa sobreposto" && casas[16].className == "Casa sobreposto") && (casas[15].className == "Casa Casa2")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[2].innerHTML) && (casas[7].innerHTML) && (casas[13].innerHTML)
                 && (casas[2].className == "Casa sobreposto" && casas[7].className == "Casa sobreposto" && casas[13].className == "Casa sobreposto")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[5].innerHTML) && (casas[11].innerHTML) && (casas[16].innerHTML)
                 && (casas[5].className == "Casa sobreposto" && casas[11].className == "Casa sobreposto" && casas[16].className == "Casa sobreposto")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[9].innerHTML) && (casas[14].innerHTML) && (casas[17].innerHTML)
                 && (casas[9].className == "Casa sobreposto" && casas[14].className == "Casa sobreposto" && casas[17].className == "Casa sobreposto")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[2].innerHTML) && (casas[5].innerHTML) && (casas[9].innerHTML)
                 && (casas[2].className == "Casa sobreposto" && casas[5].className == "Casa sobreposto" && casas[9].className == "Casa sobreposto")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[7].innerHTML) && (casas[11].innerHTML) && (casas[14].innerHTML)
                 && (casas[7].className == "Casa sobreposto" && casas[11].className == "Casa sobreposto" && casas[14].className == "Casa sobreposto")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else if ((casas[13].innerHTML) && (casas[16].innerHTML) && (casas[17].innerHTML)
                 && (casas[13].className == "Casa sobreposto" && casas[16].className == "Casa sobreposto" && casas[17].className == "Casa sobreposto")) {
-                window.location.href = "Index.html"
+                window.location.href = "index.html"
                 return alert("Verdes ganharam!")
 
             } else
@@ -436,113 +436,113 @@ function vencerV() {
                 //para as casas pretas sobrepostas
                 if ((casas[0].innerHTML) && (casas[2].innerHTML) && (casas[6].innerHTML)
                     && (casas[0].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[1].innerHTML) && (casas[2].innerHTML) && (casas[3].innerHTML)
                     && (casas[1].className == "Casa Casa2 sobreposto" && casas[3].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa")) {
                     console.log("chegou ue?")
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[1].innerHTML) && (casas[5].innerHTML) && (casas[10].innerHTML)
                     && (casas[1].className == "Casa Casa2 sobreposto" && casas[10].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[4].innerHTML) && (casas[5].innerHTML) && (casas[6].innerHTML)
                     && (casas[4].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[2].innerHTML) && (casas[6].innerHTML) && (casas[11].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa") && (casas[11].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[5].innerHTML) && (casas[6].innerHTML) && (casas[7].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa") && (casas[7].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[3].innerHTML) && (casas[7].innerHTML) && (casas[12].innerHTML)
                     && (casas[3].className == "Casa Casa2 sobreposto" && casas[12].className == "Casa Casa2 sobreposto") && (casas[7].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[6].innerHTML) && (casas[7].innerHTML) && (casas[8].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto" && casas[8].className == "Casa Casa2 sobreposto") && (casas[7].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[5].innerHTML) && (casas[10].innerHTML) && (casas[14].innerHTML)
                     && (casas[10].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa") && (casas[14].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[9].innerHTML) && (casas[10].innerHTML) && (casas[11].innerHTML)
                     && (casas[10].className == "Casa Casa2 sobreposto") && (casas[9].className == "Casa") && (casas[11].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[6].innerHTML) && (casas[11].innerHTML) && (casas[15].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto" && casas[15].className == "Casa Casa2 sobreposto") && (casas[11].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[10].innerHTML) && (casas[11].innerHTML) && (casas[12].innerHTML)
                     && (casas[10].className == "Casa Casa2 sobreposto" && casas[12].className == "Casa Casa2 sobreposto") && (casas[11].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[7].innerHTML) && (casas[12].innerHTML) && (casas[16].innerHTML)
                     && (casas[12].className == "Casa Casa2 sobreposto") && (casas[7].className == "Casa") && (casas[16].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[11].innerHTML) && (casas[12].innerHTML) && (casas[13].innerHTML)
                     && (casas[12].className == "Casa Casa2 sobreposto") && (casas[11].className == "Casa") && (casas[13].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[11].innerHTML) && (casas[15].innerHTML) && (casas[17].innerHTML)
                     && (casas[15].className == "Casa Casa2 sobreposto") && (casas[11].className == "Casa") && (casas[17].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[14].innerHTML) && (casas[15].innerHTML) && (casas[16].innerHTML)
                     && (casas[15].className == "Casa Casa2 sobreposto") && (casas[14].className == "Casa") && (casas[16].className == "Casa")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[0].innerHTML) && (casas[3].innerHTML) && (casas[8].innerHTML)
                     && (casas[0].className == "Casa Casa2 sobreposto" && casas[3].className == "Casa Casa2 sobreposto" && casas[8].className == "Casa Casa2 sobreposto")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[1].innerHTML) && (casas[6].innerHTML) && (casas[12].innerHTML)
                     && (casas[1].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto" && casas[12].className == "Casa Casa2 sobreposto")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[4].innerHTML) && (casas[10].innerHTML) && (casas[15].innerHTML)
                     && (casas[4].className == "Casa Casa2 sobreposto" && casas[10].className == "Casa Casa2 sobreposto" && casas[15].className == "Casa Casa2 sobreposto")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[0].innerHTML) && (casas[1].innerHTML) && (casas[5].innerHTML)
                     && (casas[0].className == "Casa Casa2 sobreposto" && casas[1].className == "Casa Casa2 sobreposto" && casas[5].className == "Casa Casa2 sobreposto")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[3].innerHTML) && (casas[6].innerHTML) && (casas[10].innerHTML)
                     && (casas[3].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto" && casas[10].className == "Casa Casa2 sobreposto")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 } else if ((casas[8].innerHTML) && (casas[12].innerHTML) && (casas[15].innerHTML)
                     && (casas[8].className == "Casa Casa2 sobreposto" && casas[12].className == "Casa Casa2 sobreposto" && casas[15].className == "Casa Casa2 sobreposto")) {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return alert("Pretas ganharam!")
 
                 }
