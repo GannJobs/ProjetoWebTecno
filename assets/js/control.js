@@ -62,11 +62,15 @@ function sobrepor() {
     if (r) {
 
         if (origem.getAttribute("t") == 0) {
+
             origem.setAttribute("t", turn)
             origem.classList.toggle("sobreposto")
+            
         } else {
+
             origem.setAttribute("t", turn)
             origem.classList.toggle("sobreposto")
+
         }
 
     } else {
@@ -278,9 +282,11 @@ function jogarN(){
     let r = confirm("Deseja jogar novamente?")
     if(r){
         window.location.href = "Jogo.html"
+        casas = []
         return
     } else {
         window.location.href = "index.html"
+        casas = []
         return
     }
 }
