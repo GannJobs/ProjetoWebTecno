@@ -13,11 +13,12 @@ body{
     flex-direction: column;
 }
 
-div {
-    align-items: center;
+.main {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 button{

@@ -1,3 +1,31 @@
+function include(file_path) {
+    /**
+     * criando um elemento script:
+     * </script><script></script>
+     */
+    let j = document.createElement("script");
+
+    /**
+     * informando o type como text/javacript:
+     * <script type="text/javascript"></script>
+     */
+    j.type = "text/javascript";
+
+    /**
+     * Inserindo um src com o valor do parâmetro file_path:
+     * <script type="javascript" src="+file_path+"></script>
+     */
+    j.src = file_path;
+
+    /**
+     * Inserindo o seu elemento(no caso o j) como filho(child) do BODY:
+     * <html><body><script type="javascript" src="+file_path+"></script></body></html>
+     */
+    document.getElementsByTagName("body")[0].appendChild(j);
+}
+
+include("assets/js/sweatalert2.js")
+
 let casas = document.getElementsByClassName("Casa")
 let linhas = document.getElementsByClassName("Linha")
 let origem
@@ -18,39 +46,55 @@ for (casa of casas) {
 
             if (origem.id == event.target.id && origem.innerHTML && event.target.innerHTML) {
                 origem = ""
-                return
+                return Swal.fire({
+                    icon: 'question',
+                    title: 'Movimento Inválido!',
+                    text: 'Ação Cancelada!',
+                })
             }
 
             if (origem.id == event.target.id && !event.target.innerHTML && !origem.innerHTML) {
                 if (origem.getAttribute("t") == 0) {
                     Turn(event)
                     sobrepor()
-                    turn++
-                    origem = ""
                     return
                 } else if (origem.getAttribute("t") < turn - 2) {
                     Turn(event)
                     sobrepor()
-                    turn++
-                    origem = ""
                     return
                 } else {
                     origem = ""
-                    alert("Essa casa so pode ser desobreposta no seu proximo turno!")
-                    return
+                    return Swal.fire({
+                        icon: 'error',
+                        title: 'Movimento Inválido!',
+                        text: 'Essa casa so pode ser desobreposta no seu proximo turno!',
+                    })
                 }
             }
 
             if (!origem.innerHTML) {
 
                 origem = ""
-                return alert("Não se pode passar nada para uma casa!")
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Movimento Inválido!',
+                    text: 'Não se pode realizar movimentos com casas que não tem peças!',
+                })
 
-            } else if (!event.target.innerHTML){
+            } else if (!event.target.innerHTML) {
 
                 Turn(event)
                 turn++
                 LimitMov(event)
+
+            } else if (event.target.innerHTML) {
+
+                origem = ""
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Movimento Inválido!',
+                    text: 'Não se pode para uma casa ocupada!',
+                })
 
             }
         }
@@ -58,31 +102,53 @@ for (casa of casas) {
 }
 
 function sobrepor() {
-    let r = confirm("Deseja Trocar a Casa?")
-    if (r) {
 
-        if (origem.getAttribute("t") == 0) {
+    let r = false
+    console.log(r)
+    Swal.fire({
+        title: 'Sobreposição',
+        text: "Deseja colocar ou retirar a sobreposição nesta casa?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Feito!',
+                '',
+                'success'
+            )
+            r = true
+            if (r) {
 
-            origem.setAttribute("t", turn)
-            origem.classList.toggle("sobreposto")
-            
-        } else {
+                if (origem.getAttribute("t") == 0) {
 
-            origem.setAttribute("t", turn)
-            origem.classList.toggle("sobreposto")
+                    origem.setAttribute("t", turn)
+                    origem.classList.toggle("sobreposto")
+                    turn++
+                    origem = ""
 
+                } else {
+
+                    origem.setAttribute("t", turn)
+                    origem.classList.toggle("sobreposto")
+                    turn++
+                    origem = ""
+
+                }
+
+            } else {
+
+                turn--
+                origem = ""
+                return
+
+            }
         }
-
-    } else {
-
-        turn--
-        origem = ""
-        return
-
-    }
+    })
 }
-
-
 
 function Turn(event) {
     if (turn % 2 == 1) {
@@ -95,8 +161,11 @@ function Turn(event) {
         } else {
             origem = ""
             turn--
-            alert("E o turno das Verdes, nao pule o turno !")
-            return
+            return Swal.fire(
+                'Turno do Oponente!',
+                'É o turno das Verdes, nao pule o turno !',
+                'warning'
+            )
         }
     } else if (turn % 2 == 0) {
         if (((origem.className == "Casa" || (origem.className == "Casa Casa2 sobreposto" && origem.innerHTML))
@@ -108,8 +177,11 @@ function Turn(event) {
         } else {
             origem = ""
             turn--
-            alert("E o turno das Pretas, nao pule o turno !")
-            return
+            return Swal.fire(
+                'Turno do Oponente!',
+                'É o turno das Pretas, nao pule o turno !',
+                'warning'
+            )
         }
     }
 }
@@ -133,7 +205,11 @@ function movV(evento) {
 
     } else {
         origem = ""
-        return alert("Movimento nao tratado!")
+        return Swal.fire(
+            'Movimento não tratado',
+            'Perdoe o desenvolvedor!',
+            'error'
+        )
     }
 }
 
@@ -150,7 +226,11 @@ function movP(evento) {
 
     } else {
         origem = ""
-        return alert("Movimento nao tratado!")
+        return Swal.fire(
+            'Movimento não tratado',
+            'Perdoe o desenvolvedor!',
+            'error'
+        )
     }
 }
 
@@ -195,7 +275,11 @@ function movimento(event) {
 
         } else {
             origem = ""
-            alert("movimento Invalido!")
+            return Swal.fire({
+                icon: 'error',
+                title: 'Movimento Inválido!',
+                text: 'Possivelmente não tratado...!',
+            })
         }
 }
 
@@ -274,21 +358,49 @@ function LimitMov(evento) {
         movimento(evento)
 
     } else {
-        return
+        origem = ""
+        return Swal.fire(
+            'Movimento Inválido!',
+            'Fora do limite de movimento (1 casa), perdeu o turno',
+            'error'
+        )
     }
 }
 
-function jogarN(){
-    let r = confirm("Deseja jogar novamente?")
-    if(r){
-        window.location.href = "Jogo.html"
-        casas = []
-        return
-    } else {
-        window.location.href = "index.html"
-        casas = []
-        return
-    }
+function jogarN(vencedor) {
+
+    casas = ""
+    Swal.fire({
+        title: 'As ' + vencedor + ' ganharam!',
+        text: 'Uma estratégia superior é outro nível!',
+        imageUrl: 'https://img.freepik.com/vetores-gratis/trofeu-de-ouro-com-a-placa-de-identificacao-do-vencedor-da-competicao_68708-545.jpg?w=2000',
+        imageWidth: 150,
+        imageHeight: 150,
+        imageAlt: 'Custom image',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'GG!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Fim de Jogo',
+                text: "Deseja jogar novamente?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceitar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "Jogo.html"
+                    return
+                } else {
+                    window.location.href = "Index.html"
+                    return
+                }
+            })
+        }
+    })
+
 }
 
 function vencerV() {
@@ -296,244 +408,211 @@ function vencerV() {
         //para as verdes
         if ((casas[1].innerHTML) && (casas[4].innerHTML) && (casas[0].innerHTML)
             && (casas[1].className == "Casa Casa2") && (casas[4].className == "Casa Casa2") && (casas[0].className == "Casa Casa2")) {
-            
-            alert("Verdes ganharam!")
-            jogarN()
+
+            jogarN("Verdes")
             return
 
         } else if ((casas[10].innerHTML) && (casas[6].innerHTML) && (casas[3].innerHTML)
             && (casas[10].className == "Casa Casa2") && (casas[6].className == "Casa Casa2") && (casas[3].className == "Casa Casa2")) {
-            
-            alert("Verdes ganharam!")
-            jogarN()
+
+            jogarN("Verdes")
             return
 
         } else if ((casas[15].innerHTML) && (casas[12].innerHTML) && (casas[8].innerHTML)
             && (casas[15].className == "Casa Casa2") && (casas[12].className == "Casa Casa2") && (casas[8].className == "Casa Casa2")) {
-            
-            alert("Verdes ganharam!")
-            jogarN()
+
+            jogarN("Verdes")
             return
 
         } else if ((casas[0].innerHTML) && (casas[3].innerHTML) && (casas[8].innerHTML)
             && (casas[0].className == "Casa Casa2") && (casas[3].className == "Casa Casa2") && (casas[8].className == "Casa Casa2")) {
-            
-            alert("Verdes ganharam!")
-            jogarN()
+
+            jogarN("Verdes")
             return
 
         } else if ((casas[1].innerHTML) && (casas[6].innerHTML) && (casas[12].innerHTML)
             && (casas[1].className == "Casa Casa2") && (casas[6].className == "Casa Casa2") && (casas[12].className == "Casa Casa2")) {
-            
-            alert("Verdes ganharam!")
-            jogarN()
+
+            jogarN("Verdes")
             return
 
         } else if ((casas[4].innerHTML) && (casas[10].innerHTML) && (casas[15].innerHTML)
             && (casas[4].className == "Casa Casa2") && (casas[10].className == "Casa Casa2") && (casas[15].className == "Casa Casa2")) {
-            
-            alert("Verdes ganharam!")
-            jogarN()
+
+            jogarN("Verdes")
             return
 
             //para as pretas
         } else if ((casas[2].innerHTML) && (casas[5].innerHTML) && (casas[9].innerHTML)
             && (casas[2].className == "Casa") && (casas[5].className == "Casa") && (casas[9].className == "Casa")) {
-            
-            alert("Pretas ganharam!")
-            jogarN()
+
+            jogarN("Pretas")
             return
 
         } else if ((casas[7].innerHTML) && (casas[11].innerHTML) && (casas[14].innerHTML)
             && (casas[7].className == "Casa") && (casas[11].className == "Casa") && (casas[14].className == "Casa")) {
-            
-            alert("Pretas ganharam!")
-            jogarN()
+
+            jogarN("Pretas")
             return
 
         } else if ((casas[13].innerHTML) && (casas[16].innerHTML) && (casas[17].innerHTML)
             && (casas[13].className == "Casa") && (casas[16].className == "Casa") && (casas[17].className == "Casa")) {
-            
-            alert("Pretas ganharam!")
-            jogarN()
+
+            jogarN("Pretas")
             return
 
         } else if ((casas[2].innerHTML) && (casas[7].innerHTML) && (casas[13].innerHTML)
             && (casas[2].className == "Casa") && (casas[7].className == "Casa") && (casas[13].className == "Casa")) {
-            
-            alert("Pretas ganharam!")
-            jogarN()
+
+            jogarN("Pretas")
             return
 
         } else if ((casas[5].innerHTML) && (casas[11].innerHTML) && (casas[16].innerHTML)
             && (casas[5].className == "Casa") && (casas[11].className == "Casa") && (casas[16].className == "Casa")) {
-            
-            alert("Pretas ganharam!")
-            jogarN()
+
+            jogarN("Pretas")
             return
 
         } else if ((casas[9].innerHTML) && (casas[14].innerHTML) && (casas[17].innerHTML)
             && (casas[9].className == "Casa") && (casas[14].className == "Casa") && (casas[17].className == "Casa")) {
-            
-            alert("Pretas ganharam!")
-            jogarN()
+
+            jogarN("Pretas")
             return
-            
+
         } else
 
             //para as casas sobrepostas verdes
             if ((casas[1].innerHTML) && (casas[2].innerHTML) && (casas[3].innerHTML)
                 && (casas[2].className == "Casa sobreposto") && (casas[1].className == "Casa Casa2") && (casas[3].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[0].innerHTML) && (casas[2].innerHTML) && (casas[6].innerHTML)
                 && (casas[2].className == "Casa sobreposto") && (casas[0].className == "Casa Casa2") && (casas[3].className == "Casa Casa2")) {
 
-                alert("Verdes ganharam!")
-                jogarN()
+                jogarN("Verdes")
                 return
 
             } else if ((casas[1].innerHTML) && (casas[5].innerHTML) && (casas[10].innerHTML)
                 && (casas[5].className == "Casa sobreposto") && (casas[1].className == "Casa Casa2") && (casas[10].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[4].innerHTML) && (casas[5].innerHTML) && (casas[6].innerHTML)
                 && (casas[5].className == "Casa sobreposto") && (casas[4].className == "Casa Casa2") && (casas[6].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[5].innerHTML) && (casas[6].innerHTML) && (casas[7].innerHTML)
                 && (casas[5].className == "Casa sobreposto" && casas[7].className == "Casa sobreposto") && (casas[6].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[2].innerHTML) && (casas[6].innerHTML) && (casas[11].innerHTML)
                 && (casas[11].className == "Casa sobreposto" && casas[2].className == "Casa sobreposto") && (casas[6].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[3].innerHTML) && (casas[7].innerHTML) && (casas[12].innerHTML)
                 && (casas[7].className == "Casa sobreposto") && (casas[3].className == "Casa Casa2") && (casas[12].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[6].innerHTML) && (casas[7].innerHTML) && (casas[8].innerHTML)
                 && (casas[7].className == "Casa sobreposto") && (casas[6].className == "Casa Casa2") && (casas[8].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[5].innerHTML) && (casas[10].innerHTML) && (casas[14].innerHTML)
                 && (casas[5].className == "Casa sobreposto" && casas[14].className == "Casa sobreposto") && (casas[10].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[9].innerHTML) && (casas[10].innerHTML) && (casas[11].innerHTML)
                 && (casas[9].className == "Casa sobreposto" && casas[11].className == "Casa sobreposto") && (casas[10].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[6].innerHTML) && (casas[11].innerHTML) && (casas[15].innerHTML)
                 && (casas[11].className == "Casa sobreposto") && (casas[6].className == "Casa Casa2") && (casas[15].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[10].innerHTML) && (casas[11].innerHTML) && (casas[12].innerHTML)
                 && (casas[11].className == "Casa sobreposto") && (casas[10].className == "Casa Casa2") && (casas[12].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[7].innerHTML) && (casas[12].innerHTML) && (casas[16].innerHTML)
                 && (casas[7].className == "Casa sobreposto" && casas[16].className == "Casa sobreposto") && (casas[12].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[11].innerHTML) && (casas[12].innerHTML) && (casas[13].innerHTML)
                 && (casas[11].className == "Casa sobreposto" && casas[13].className == "Casa sobreposto") && (casas[12].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[11].innerHTML) && (casas[15].innerHTML) && (casas[17].innerHTML)
                 && (casas[11].className == "Casa sobreposto" && casas[17].className == "Casa sobreposto") && (casas[15].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[14].innerHTML) && (casas[15].innerHTML) && (casas[16].innerHTML)
                 && (casas[14].className == "Casa sobreposto" && casas[16].className == "Casa sobreposto") && (casas[15].className == "Casa Casa2")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[2].innerHTML) && (casas[7].innerHTML) && (casas[13].innerHTML)
                 && (casas[2].className == "Casa sobreposto" && casas[7].className == "Casa sobreposto" && casas[13].className == "Casa sobreposto")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[5].innerHTML) && (casas[11].innerHTML) && (casas[16].innerHTML)
                 && (casas[5].className == "Casa sobreposto" && casas[11].className == "Casa sobreposto" && casas[16].className == "Casa sobreposto")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[9].innerHTML) && (casas[14].innerHTML) && (casas[17].innerHTML)
                 && (casas[9].className == "Casa sobreposto" && casas[14].className == "Casa sobreposto" && casas[17].className == "Casa sobreposto")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[2].innerHTML) && (casas[5].innerHTML) && (casas[9].innerHTML)
                 && (casas[2].className == "Casa sobreposto" && casas[5].className == "Casa sobreposto" && casas[9].className == "Casa sobreposto")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[7].innerHTML) && (casas[11].innerHTML) && (casas[14].innerHTML)
                 && (casas[7].className == "Casa sobreposto" && casas[11].className == "Casa sobreposto" && casas[14].className == "Casa sobreposto")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else if ((casas[13].innerHTML) && (casas[16].innerHTML) && (casas[17].innerHTML)
                 && (casas[13].className == "Casa sobreposto" && casas[16].className == "Casa sobreposto" && casas[17].className == "Casa sobreposto")) {
-                
-                alert("Verdes ganharam!")
-                jogarN()
+
+                jogarN("Verdes")
                 return
 
             } else
@@ -541,157 +620,134 @@ function vencerV() {
                 //para as casas pretas sobrepostas
                 if ((casas[0].innerHTML) && (casas[2].innerHTML) && (casas[6].innerHTML)
                     && (casas[0].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+    
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[1].innerHTML) && (casas[2].innerHTML) && (casas[3].innerHTML)
                     && (casas[1].className == "Casa Casa2 sobreposto" && casas[3].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa")) {
-                    console.log("chegou ue?")
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+    
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[1].innerHTML) && (casas[5].innerHTML) && (casas[10].innerHTML)
                     && (casas[1].className == "Casa Casa2 sobreposto" && casas[10].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+    
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[4].innerHTML) && (casas[5].innerHTML) && (casas[6].innerHTML)
                     && (casas[4].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+    
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[2].innerHTML) && (casas[6].innerHTML) && (casas[11].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa") && (casas[11].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+    
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[5].innerHTML) && (casas[6].innerHTML) && (casas[7].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa") && (casas[7].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[3].innerHTML) && (casas[7].innerHTML) && (casas[12].innerHTML)
                     && (casas[3].className == "Casa Casa2 sobreposto" && casas[12].className == "Casa Casa2 sobreposto") && (casas[7].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[6].innerHTML) && (casas[7].innerHTML) && (casas[8].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto" && casas[8].className == "Casa Casa2 sobreposto") && (casas[7].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[5].innerHTML) && (casas[10].innerHTML) && (casas[14].innerHTML)
                     && (casas[10].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa") && (casas[14].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[9].innerHTML) && (casas[10].innerHTML) && (casas[11].innerHTML)
                     && (casas[10].className == "Casa Casa2 sobreposto") && (casas[9].className == "Casa") && (casas[11].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[6].innerHTML) && (casas[11].innerHTML) && (casas[15].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto" && casas[15].className == "Casa Casa2 sobreposto") && (casas[11].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[10].innerHTML) && (casas[11].innerHTML) && (casas[12].innerHTML)
                     && (casas[10].className == "Casa Casa2 sobreposto" && casas[12].className == "Casa Casa2 sobreposto") && (casas[11].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[7].innerHTML) && (casas[12].innerHTML) && (casas[16].innerHTML)
                     && (casas[12].className == "Casa Casa2 sobreposto") && (casas[7].className == "Casa") && (casas[16].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[11].innerHTML) && (casas[12].innerHTML) && (casas[13].innerHTML)
                     && (casas[12].className == "Casa Casa2 sobreposto") && (casas[11].className == "Casa") && (casas[13].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[11].innerHTML) && (casas[15].innerHTML) && (casas[17].innerHTML)
                     && (casas[15].className == "Casa Casa2 sobreposto") && (casas[11].className == "Casa") && (casas[17].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[14].innerHTML) && (casas[15].innerHTML) && (casas[16].innerHTML)
                     && (casas[15].className == "Casa Casa2 sobreposto") && (casas[14].className == "Casa") && (casas[16].className == "Casa")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[0].innerHTML) && (casas[3].innerHTML) && (casas[8].innerHTML)
                     && (casas[0].className == "Casa Casa2 sobreposto" && casas[3].className == "Casa Casa2 sobreposto" && casas[8].className == "Casa Casa2 sobreposto")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[1].innerHTML) && (casas[6].innerHTML) && (casas[12].innerHTML)
                     && (casas[1].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto" && casas[12].className == "Casa Casa2 sobreposto")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[4].innerHTML) && (casas[10].innerHTML) && (casas[15].innerHTML)
                     && (casas[4].className == "Casa Casa2 sobreposto" && casas[10].className == "Casa Casa2 sobreposto" && casas[15].className == "Casa Casa2 sobreposto")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[0].innerHTML) && (casas[1].innerHTML) && (casas[5].innerHTML)
                     && (casas[0].className == "Casa Casa2 sobreposto" && casas[1].className == "Casa Casa2 sobreposto" && casas[5].className == "Casa Casa2 sobreposto")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[3].innerHTML) && (casas[6].innerHTML) && (casas[10].innerHTML)
                     && (casas[3].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto" && casas[10].className == "Casa Casa2 sobreposto")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 } else if ((casas[8].innerHTML) && (casas[12].innerHTML) && (casas[15].innerHTML)
                     && (casas[8].className == "Casa Casa2 sobreposto" && casas[12].className == "Casa Casa2 sobreposto" && casas[15].className == "Casa Casa2 sobreposto")) {
-                    
-                    alert("Pretas ganharam!")
-                    jogarN()
+
+                    jogarN("Pretas")
                     return
 
                 }

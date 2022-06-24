@@ -11,16 +11,25 @@ body{
     width: 100vw;
     gap: 50px;
     flex-direction: column;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
 
 .Matriz {
+    background-color: #50bbb1;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 20px;
+    border-style: ridge;
+    border-color: #d5cbc7;
 }
 
 .Casa {
+    border-top-color: #347872;
+    border-right-color: #347872;
+    border-radius: 10px;
+    border-style: outset;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,11 +39,11 @@ body{
 }
 
 .Casa2 {
-    background-color: rgb(33, 145, 22);
+    background-color: rgb(27, 116, 19);
 }
 
 .Casa.sobreposto {
-    background-color: rgb(33, 145, 22);
+    background-color: rgb(27, 116, 19);
 }
 
 .Casa2.sobreposto {
@@ -42,19 +51,9 @@ body{
 }
 
 .ativo {
+    border-style: solid;
+    border-color: rgb(228, 161, 18);
     position: relative;
-}
-
-.ativo::before{
-    --tam: -5px;
-    content: "";
-    position: absolute;
-    top: var(--tam);
-    bottom: var(--tam);
-    left: var(--tam);
-    right: var(--tam);
-    z-index: -1;
-    background-color: blueviolet;
 }
 
 .Casa2.ativo::before{
@@ -71,6 +70,16 @@ circle {
     width: 60%;
     height: 60%;
     border-radius: 100%;
-    background-color: blue;
+    border-style: solid;
+    border-color: rgb(205, 207, 205);
+    background-color: rgb(231, 231, 231);
     pointer-events: none;
+}
+
+.verdes {
+    background-color: rgb(13, 179, 13);
+}
+
+.pretas {
+    background-color: rgb(44, 39, 39);
 }
