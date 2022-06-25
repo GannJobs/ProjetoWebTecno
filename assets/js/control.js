@@ -26,6 +26,10 @@ function include(file_path) {
 
 include("assets/js/sweatalert2.js")
 
+function back() {
+    window.location.href = "Index.html"
+}
+
 function fazGet(url) {
     let request = new XMLHttpRequest()
     request.open("GET", url, false)
@@ -59,10 +63,11 @@ function TextAleatorioWin() {
 
 
 let casas = document.getElementsByClassName("Casa")
+aux = casas
 let linhas = document.getElementsByClassName("Linha")
 let origem
 
-let turn = 1
+let jogada, turn = 1
 
 for (casa of casas) {
     casa.addEventListener("click", event => {
@@ -133,6 +138,25 @@ for (casa of casas) {
     })
 }
 
+function Historico() {
+    let tbody = document.getElementById("innertable")
+    let tr = tbody.insertRow()
+
+    let td_turn = tr.insertCell()
+    let td_jogada = tr.insertCell()
+
+    td_jogada.innerText = jogada
+    td_turn.innerText = turn - 1
+}
+
+function showH() {
+    let a = document.getElementById("divhistorico")
+    if (a.getAttribute("style") == "display: none;")
+        a.setAttribute("style", "")
+    else
+        a.setAttribute("style", "display: none;")
+}
+
 function sobrepor() {
 
     let r = false
@@ -170,6 +194,9 @@ function sobrepor() {
                     origem = ""
 
                 }
+
+                jogada = "Sobreposição"
+                Historico()
 
             } else {
 
@@ -219,6 +246,7 @@ function Turn(event) {
 }
 
 function mov(evento) {
+    Historico()
     evento.target.innerHTML = origem.innerHTML
     origem.innerHTML = ""
     origem = null
@@ -270,19 +298,19 @@ function movimento(event) {
     //Movimentação das verdes em casas normais e sobrepostas
     if (origem.className == "Casa Casa2" && event.target.className == "Casa Casa2") {
 
-        console.log("verde normal")
+        jogada = "verde normal"
         movV(event)
 
     } else if (origem.className == "Casa Casa2" && ((event.target.className == "Casa sobreposto")
         || event.target.className == "Casa Casa2")) {
 
-        console.log("Verde => Preta->Verde")
+        jogada = "Verde => Preta->Verde"
         movV(event)
 
     } else if (origem.className == "Casa sobreposto" && ((event.target.className == "Casa Casa2")
         || (event.target.className == "Casa sobreposto"))) {
 
-        console.log("Preta->Verde => Preta->Verde || Verde")
+        jogada = "Preta->Verde => Preta->Verde || Verde"
         movV(event)
 
     } else
@@ -290,19 +318,19 @@ function movimento(event) {
         //Movimentação das pretas em casas normais e sobrepostas
         if (origem.className == "Casa" && event.target.className == "Casa") {
 
-            console.log("preta normal")
+            jogada = "preta normal"
             movP(event)
 
         } else if (origem.className == "Casa" && ((event.target.className == "Casa Casa2 sobreposto")
             || (event.target.className == "Casa"))) {
 
-            console.log("Preta => Verde->Preta")
+            jogada = "Preta => Verde->Preta"
             movP(event)
 
         } else if (origem.className == "Casa Casa2 sobreposto" && ((event.target.className == "Casa")
             || (event.target.className == "Casa Casa2 sobreposto"))) {
 
-            console.log("Verde->Preta => Verde->Preta || Preta")
+            jogada = "Verde->Preta => Verde->Preta || Preta"
             movP(event)
 
         } else {
@@ -391,11 +419,16 @@ function LimitMov(evento) {
 
     } else {
         origem = ""
-        return Swal.fire(
+        turn--
+        Swal.fire(
             'Movimento Inválido!',
             'Fora do limite de movimento (1 casa), perdeu o turno',
             'error'
         )
+        if (turn <= 1) {
+            window.location.herf = "Jogo.html"
+        }
+        return
     }
 }
 

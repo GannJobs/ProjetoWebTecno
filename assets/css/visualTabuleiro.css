@@ -51,8 +51,8 @@ body{
 }
 
 .ativo {
-    border-style: solid;
-    border-color: rgb(228, 161, 18);
+    border-style: inset;
+    border-color: rgb(255 174 0);
     position: relative;
 }
 
@@ -82,4 +82,49 @@ circle {
 
 .pretas {
     background-color: rgb(44, 39, 39);
+}
+
+.back {
+    position: absolute;
+    width: 70px;
+    margin-top: -40vw;
+    height: 40px;
+}
+
+@media (max-height: 950px) {
+    @media (max-width: 1000px) {
+        .back {
+            position: absolute;
+            width: 70px;
+            margin-top: -160vw;
+            height: 40px;
+        }
+    }
+}
+
+@media (min-height: 951px) {
+    @media (min-width:900px) {
+        .back {
+            position: absolute;
+            width: 70px;
+            margin-top: -160vw;
+            height: 40px;
+        }
+    }
+}
+
+#divhistorico{
+    position: absolute;
+    display: block;
+    border-radius: 10%;
+    border-style: outset;
+    width: fit-content;
+    height: fit-content;
+    padding: 50px;
+    background-color: #99adac;
+}
+
+.historico tr th{
+    padding: 2px;
+    border:#000 solid 1px;
 }
