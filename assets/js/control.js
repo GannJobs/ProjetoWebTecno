@@ -26,6 +26,38 @@ function include(file_path) {
 
 include("assets/js/sweatalert2.js")
 
+function fazGet(url) {
+    let request = new XMLHttpRequest()
+    request.open("GET", url, false)
+    request.send()
+    return request.responseText
+}
+
+function resposta() {
+    data = fazGet("http://localhost:21262/")
+    usuarios = JSON.parse(data)
+
+    usuarios.forEach(element => {
+        let linha = recebeTexto(element)
+    });
+
+    return TextAleatorioWin()
+}
+
+let Fvitoria = []
+
+function recebeTexto(resultado) {
+    F = resultado.textos.t
+    Fvitoria = F.split(".")
+}
+
+function TextAleatorioWin() {
+    let aux = Math.floor(Math.random() * Fvitoria.length)
+    return Fvitoria[aux]
+}
+
+
+
 let casas = document.getElementsByClassName("Casa")
 let linhas = document.getElementsByClassName("Linha")
 let origem
@@ -369,10 +401,11 @@ function LimitMov(evento) {
 
 function jogarN(vencedor) {
 
+    let text = resposta()
     casas = ""
     Swal.fire({
         title: 'As ' + vencedor + ' ganharam!',
-        text: 'Uma estratégia superior é outro nível!',
+        text: '' + text + '',
         imageUrl: 'https://img.freepik.com/vetores-gratis/trofeu-de-ouro-com-a-placa-de-identificacao-do-vencedor-da-competicao_68708-545.jpg?w=2000',
         imageWidth: 150,
         imageHeight: 150,
@@ -620,31 +653,31 @@ function vencerV() {
                 //para as casas pretas sobrepostas
                 if ((casas[0].innerHTML) && (casas[2].innerHTML) && (casas[6].innerHTML)
                     && (casas[0].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa")) {
-    
+
                     jogarN("Pretas")
                     return
 
                 } else if ((casas[1].innerHTML) && (casas[2].innerHTML) && (casas[3].innerHTML)
                     && (casas[1].className == "Casa Casa2 sobreposto" && casas[3].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa")) {
-    
+
                     jogarN("Pretas")
                     return
 
                 } else if ((casas[1].innerHTML) && (casas[5].innerHTML) && (casas[10].innerHTML)
                     && (casas[1].className == "Casa Casa2 sobreposto" && casas[10].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa")) {
-    
+
                     jogarN("Pretas")
                     return
 
                 } else if ((casas[4].innerHTML) && (casas[5].innerHTML) && (casas[6].innerHTML)
                     && (casas[4].className == "Casa Casa2 sobreposto" && casas[6].className == "Casa Casa2 sobreposto") && (casas[5].className == "Casa")) {
-    
+
                     jogarN("Pretas")
                     return
 
                 } else if ((casas[2].innerHTML) && (casas[6].innerHTML) && (casas[11].innerHTML)
                     && (casas[6].className == "Casa Casa2 sobreposto") && (casas[2].className == "Casa") && (casas[11].className == "Casa")) {
-    
+
                     jogarN("Pretas")
                     return
 
