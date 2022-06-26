@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+*{
+    font-family: 'Comfortaa', cursive;
+}
+
 .slider {
     position: absolute;
     margin: 0 250px;
@@ -66,4 +72,8 @@
 
 .textSlide{
     text-align: center;
+}
+
+h1 {
+    padding: 10px;
 }

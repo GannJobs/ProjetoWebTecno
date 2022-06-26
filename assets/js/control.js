@@ -67,7 +67,7 @@ aux = casas
 let linhas = document.getElementsByClassName("Linha")
 let origem
 
-let jogada, turn = 1
+let c = 0, jogada, turn = 1
 
 for (casa of casas) {
     casa.addEventListener("click", event => {
@@ -121,8 +121,11 @@ for (casa of casas) {
             } else if (!event.target.innerHTML) {
 
                 Turn(event)
+
+                if (c == 0)
+                    LimitMov(event)
+
                 turn++
-                LimitMov(event)
 
             } else if (event.target.innerHTML) {
 
@@ -134,6 +137,7 @@ for (casa of casas) {
                 })
 
             }
+            c = 0
         }
     })
 }
@@ -160,7 +164,6 @@ function showH() {
 function sobrepor() {
 
     let r = false
-    console.log(r)
     Swal.fire({
         title: 'Sobreposição',
         text: "Deseja colocar ou retirar a sobreposição nesta casa?",
@@ -197,27 +200,31 @@ function sobrepor() {
 
                 jogada = "Sobreposição"
                 Historico()
-
-            } else {
-
-                turn--
-                origem = ""
-                return
-
             }
+
+        } else {
+
+            turn--
+            origem = ""
+            return
+
         }
     })
 }
 
 function Turn(event) {
     if (turn % 2 == 1) {
-        if (((origem.className == "Casa Casa2" || (origem.className == "Casa sobreposto" && origem.innerHTML))
-            && (event.target.className == "Casa Casa2" || event.target.className == "Casa sobreposto"))
-            || (!origem.innerHTML && !event.target.innerHTML)) {
+        console.log("Turno das verde, entrou aqui")
+        if ((origem.className == "Casa Casa2" || origem.className == "Casa sobreposto")
+            && (event.target.className == "Casa Casa2" || event.target.className == "Casa sobreposto")) {
+            console.log("jogada permitida")
             return
-        } else if ((origem.className == "Casa Casa2" || (origem.className == "Casa sobreposto") && !event.target.className.includes("Casa2"))) {
-            LimitMov(event)
-        } else {
+        } else if (origem.id == event.target.id) {
+            console.log("permitiu a sobreposição")
+            return
+        } else if (origem.className == "Casa" || origem.className == "Casa Casa2 sobreposto") {
+            c = 1
+            console.log("tem que falar que o turno é do oponente")
             origem = ""
             turn--
             return Swal.fire(
@@ -226,14 +233,19 @@ function Turn(event) {
                 'warning'
             )
         }
+
     } else if (turn % 2 == 0) {
-        if (((origem.className == "Casa" || (origem.className == "Casa Casa2 sobreposto" && origem.innerHTML))
-            && (event.target.className == "Casa" || event.target.className == "Casa Casa2 sobreposto"))
-            || ((!origem.innerHTML) && (!event.target.innerHTML))) {
+        console.log("Turno das pretas, entrou aqui")
+        if ((origem.className == "Casa" || origem.className == "Casa Casa2 sobreposto")
+            && (event.target.className == "Casa" || event.target.className == "Casa Casa2 sobreposto")) {
+            console.log("jogada permitida")
             return
-        } else if ((origem.className == "Casa" || (origem.className == "Casa Casa2 sobreposto") && event.target.className.includes("Casa2"))) {
-            LimitMov(event)
-        } else {
+        } else if (origem.id == event.target.id) {
+            console.log("permitiu a sobreposição")
+            return
+        } else if (origem.className == "Casa Casa2" || origem.className == "Casa sobreposto") {
+            c = 1
+            console.log("tem que falar que o turno é do oponente")
             origem = ""
             turn--
             return Swal.fire(
@@ -286,6 +298,7 @@ function movP(evento) {
 
     } else {
         origem = ""
+        turn--
         return Swal.fire(
             'Movimento não tratado',
             'Perdoe o desenvolvedor!',
@@ -334,11 +347,12 @@ function movimento(event) {
             movP(event)
 
         } else {
+            turn--
             origem = ""
             return Swal.fire({
                 icon: 'error',
                 title: 'Movimento Inválido!',
-                text: 'Possivelmente não tratado...!',
+                text: 'So mover a peça para a casa de sua respectiva cor!',
             })
         }
 }
@@ -425,9 +439,6 @@ function LimitMov(evento) {
             'Fora do limite de movimento (1 casa), perdeu o turno',
             'error'
         )
-        if (turn <= 1) {
-            window.location.herf = "Jogo.html"
-        }
         return
     }
 }
@@ -550,7 +561,6 @@ function vencerV() {
             //para as casas sobrepostas verdes
             if ((casas[1].innerHTML) && (casas[2].innerHTML) && (casas[3].innerHTML)
                 && (casas[2].className == "Casa sobreposto") && (casas[1].className == "Casa Casa2") && (casas[3].className == "Casa Casa2")) {
-
 
                 jogarN("Verdes")
                 return
