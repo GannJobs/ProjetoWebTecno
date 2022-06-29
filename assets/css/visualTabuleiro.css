@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
+
+/* BUTAO https://freefrontend.com/css-flat-buttons/ */
+
 *{
     margin: 0;
     padding: 0;
@@ -12,7 +15,7 @@ body{
     justify-content: center;
     height: 100vh;
     width: 100vw;
-    gap: 50px;
+    gap: 30px;
     flex-direction: column;
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
@@ -88,18 +91,18 @@ circle {
 }
 
 .back {
-    position: absolute;
+    /* position: absolute; */
     width: 70px;
-    margin-top: -40vw;
+    /* margin-top: -40vw; */
     height: 40px;
 }
 
 @media (max-height: 950px) {
     @media (max-width: 1000px) {
         .back {
-            position: absolute;
+            /* position: absolute; */
             width: 70px;
-            margin-top: -160vw;
+            /* margin-top: -160vw; */
             height: 40px;
         }
     }
@@ -123,6 +126,8 @@ circle {
     border-style: outset;
     width: fit-content;
     height: fit-content;
+    max-height: 100px;
+    overflow-y: auto;
     padding: 50px;
     background-color: #99adac;
 }
