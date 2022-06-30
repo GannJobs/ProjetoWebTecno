@@ -63,8 +63,6 @@ function TextAleatorioWin() {
 
 
 let casas = document.getElementsByClassName("Casa")
-aux = casas
-let linhas = document.getElementsByClassName("Linha")
 let origem
 
 let c = 0, jogada, turn = 1
@@ -445,7 +443,8 @@ function LimitMov(evento) {
 
 function jogarN(vencedor) {
 
-    let text = resposta()
+    let text = "(logo uma frase impactante!)"
+    text = resposta()
     casas = ""
     Swal.fire({
         title: 'As ' + vencedor + ' ganharam!',
