@@ -443,7 +443,6 @@ function LimitMov(evento) {
 
 function jogarN(vencedor) {
 
-    let text = "(logo uma frase impactante!)"
     text = resposta()
     casas = ""
     Swal.fire({

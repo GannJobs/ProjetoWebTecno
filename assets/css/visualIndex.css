@@ -24,7 +24,25 @@ body{
     gap: 10px;
 }
 
+button:hover{
+    background-color: #ddff00;
+}
+
+#button:hover{
+    animation: pulsate 1s ease-in-out;
+}
+
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 25px #ddff00, 0 0 50px #a8ae01;
+    }
+}
+
 button{
     width: 100px;
     height: 30px;
+}
+
+h1 {
+    text-align: center;
 }
