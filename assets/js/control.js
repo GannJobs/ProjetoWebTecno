@@ -442,7 +442,6 @@ function LimitMov(evento) {
 }
 
 function jogarN(vencedor) {
-
     text = resposta()
     casas = ""
     Swal.fire({
