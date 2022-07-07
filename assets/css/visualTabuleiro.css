@@ -133,10 +133,10 @@ circle {
 
 @media (max-width: 500px) {
     .Casa{
-        border-width: 4px;
+        border-width: 3px;
     }
 
     circle{
-        border-width: 4px;
+        border-width: 3px;
     }
 }
