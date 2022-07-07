@@ -13,7 +13,9 @@
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: rgb(192, 214, 207);
+    /* background-color: rgb(192, 214, 207); */
+    background-color: aquamarine;
+    border-radius: 10px;
 }
 
 .slides {
@@ -85,16 +87,21 @@ p {
     text-align: center;
 }
 
+#CSlide{
+    border-radius: 10px;
+    border-color: aquamarine;
+}
+
 /* tela especifica para mobile */
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     h1 {
-        font-size: 15px;
+        font-size: 18px;
     }
 
     p {
         margin: 10px;
-        font-size: 13px;
+        font-size: 15px;
         text-align: center;
     }
 
@@ -102,21 +109,8 @@ p {
         width: 60px;
     }
 
-    .slider {
-        gap: 10px;
-        position: absolute;
-        width: 80vw;
-        height: 45%;
-    }
-
     .slides {
-        gap: 25px;
-        display: flex;
-        flex-direction: column;
-        height: auto;
-    }
-
-    .manual-navigation {
-        display: none;
+        overflow-y: auto;
+        max-height: auto;
     }
 }
