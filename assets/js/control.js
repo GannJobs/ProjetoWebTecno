@@ -27,7 +27,7 @@ function include(file_path) {
 include("assets/js/sweatalert2.js")
 
 function back() {
-    window.location.href = "Index.html"
+    window.location.href = "index.html"
 }
 
 let Fvitoria = [], Fwin
@@ -475,7 +475,7 @@ function jogarN(vencedor) {
                     window.location.href = "Jogo.html"
                     return
                 } else {
-                    window.location.href = "Index.html"
+                    window.location.href = "index.html"
                     return
                 }
             })
