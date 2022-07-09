@@ -34,3 +34,11 @@ function Playclick(){
     audio.play()
     console.log('toca misera')
 }
+
+function selectslide(event){
+    const man = document.getElementsByClassName("manual-navigation")[0]
+    for(let label of man.children){
+        label.style = ""
+    }
+    event.target.style = "background-color: blue;"
+}
