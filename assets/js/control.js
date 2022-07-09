@@ -146,7 +146,7 @@ function Historico() {
     let td_jogada = tr.insertCell()
 
     td_jogada.innerText = jogada
-    td_turn.innerText = turn - 1
+    td_turn.innerText = turn
 }
 
 function showH() {
@@ -218,15 +218,27 @@ function sobrepor() {
     })
 }
 
+function indicarTurno() {
+    let bola = document.querySelector('span')
+    bola.innerHTML = turn + 1
+    if(turn % 2 == 0){
+        bola.style = "background-color: rgb(13, 179, 13);"
+    }else{
+        bola.style = "background-color: rgb(44, 39, 39);"
+    }
+}
+
 function Turn(event) {
     if (turn % 2 == 1) {
         console.log("Turno das verde, entrou aqui")
         if ((origem.className == "Casa Casa2" || origem.className == "Casa sobreposto")
             && (event.target.className == "Casa Casa2" || event.target.className == "Casa sobreposto")) {
             console.log("jogada permitida")
+            indicarTurno()
             return
         } else if (origem.id == event.target.id) {
             console.log("permitiu a sobreposição")
+            indicarTurno()
             return
         } else if (origem.className == "Casa" || origem.className == "Casa Casa2 sobreposto") {
             c = 1
@@ -245,9 +257,11 @@ function Turn(event) {
         if ((origem.className == "Casa" || origem.className == "Casa Casa2 sobreposto")
             && (event.target.className == "Casa" || event.target.className == "Casa Casa2 sobreposto")) {
             console.log("jogada permitida")
+            indicarTurno()
             return
         } else if (origem.id == event.target.id) {
             console.log("permitiu a sobreposição")
+            indicarTurno()
             return
         } else if (origem.className == "Casa Casa2" || origem.className == "Casa sobreposto") {
             c = 1

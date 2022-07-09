@@ -131,7 +131,7 @@ circle {
 
 #botoes{
     display: flex;
-    margin-left: 33px;
+    margin-right: 8px;
     margin-bottom: 20px;
     display: none;
     position: relative;
@@ -159,6 +159,18 @@ img{
 button{
     width: fit-content;
     height: fit-content;
+}
+
+span {
+    color: rgb(231, 231, 231);
+    display: flex;
+    text-align: center;
+    background-color: rgb(13, 179, 13);
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
 }
 
 /* tela especifica para mobile */
