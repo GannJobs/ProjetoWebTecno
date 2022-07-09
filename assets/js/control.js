@@ -67,6 +67,11 @@ let origem
 
 let c = 0, jogada, turn = 1
 
+function Playmove(){
+    const audio = document.getElementById('move')
+    audio.play()
+}
+
 for (casa of casas) {
     casa.addEventListener("click", event => {
 
@@ -180,6 +185,7 @@ function sobrepor() {
             r = true
             if (r) {
 
+                Playmove()
                 if (origem.getAttribute("t") == 0) {
 
                     origem.setAttribute("t", turn)
@@ -257,6 +263,7 @@ function Turn(event) {
 
 function mov(evento) {
     Historico()
+    Playmove()
     evento.target.innerHTML = origem.innerHTML
     origem.innerHTML = ""
     origem = null
@@ -441,8 +448,13 @@ function LimitMov(evento) {
     }
 }
 
+function Playsong(){
+    const audio = document.getElementById('win')
+    audio.play()
+}
+
 function jogarN(vencedor) {
-    text = resposta()
+    Playsong()
     casas = ""
     Swal.fire({
         title: 'As ' + vencedor + ' ganharam!',
