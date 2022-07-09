@@ -19,6 +19,8 @@
 }
 
 .slides {
+    overflow-y: auto;
+        max-height: auto;
     display: flex;
     width: 400%;
     height: 350px;
@@ -90,6 +92,31 @@ p {
 #CSlide{
     border-radius: 10px;
     border-color: aquamarine;
+}
+
+img {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+#imagemsobrepor{ 
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#allsobrepor{
+    justify-content: center;
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#gif{
+    position: relative;
+    width: 200px;
+    height: 200px;
 }
 
 /* tela especifica para mobile */
