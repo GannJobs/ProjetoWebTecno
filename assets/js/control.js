@@ -43,10 +43,10 @@ function TextAleatorioWin() {
     Fwin = Fvitoria[aux]
 }
 
-const ChamarApi = async() => {
+const ChamarApi = async () => {
     const url = "https://frases-vitoria.herokuapp.com/textos"
-    const dados = await fetch(url,{mode:'cors',headers:{'Access-Control-Allow-Origin':'*'}}).then(
-        async(dados) => {
+    const dados = await fetch(url, { mode: 'cors', headers: { 'Access-Control-Allow-Origin': '*' } }).then(
+        async (dados) => {
             const textos = await dados.json()
             recebeTexto(textos[0].textos)
         }
@@ -62,7 +62,7 @@ let origem
 
 let c = 0, jogada, turn = 1
 
-function Playmove(){
+function Playmove() {
     const audio = document.getElementById('move')
     audio.play()
 }
@@ -121,7 +121,6 @@ for (casa of casas) {
 
                 if (c == 0)
                     LimitMov(event)
-
                 turn++
 
             } else if (event.target.innerHTML) {
@@ -156,6 +155,14 @@ function showH() {
         a.setAttribute("style", "")
     else
         a.setAttribute("style", "display: none;")
+}
+
+function showO() {
+    let b = document.getElementById("botoes")
+    if (b.getAttribute("style") == "display: none;")
+        b.setAttribute("style", "display: flex;")
+    else
+        b.setAttribute("style", "display: none;")
 }
 
 function sobrepor() {
@@ -443,7 +450,7 @@ function LimitMov(evento) {
     }
 }
 
-function Playsong(){
+function Playsong() {
     const audio = document.getElementById('win')
     audio.play()
 }
@@ -481,82 +488,82 @@ function jogarN(vencedor) {
             })
         }
     })
-
 }
 
 function vencerV() {
     setInterval(() => {
+        if (!casas) return
         //para as verdes
         if ((casas[1].innerHTML) && (casas[4].innerHTML) && (casas[0].innerHTML)
             && (casas[1].className == "Casa Casa2") && (casas[4].className == "Casa Casa2") && (casas[0].className == "Casa Casa2")) {
-                
+
             jogarN("Verdes")
             return
 
         } else if ((casas[10].innerHTML) && (casas[6].innerHTML) && (casas[3].innerHTML)
             && (casas[10].className == "Casa Casa2") && (casas[6].className == "Casa Casa2") && (casas[3].className == "Casa Casa2")) {
-                
+
             jogarN("Verdes")
             return
 
         } else if ((casas[15].innerHTML) && (casas[12].innerHTML) && (casas[8].innerHTML)
             && (casas[15].className == "Casa Casa2") && (casas[12].className == "Casa Casa2") && (casas[8].className == "Casa Casa2")) {
-                
+
             jogarN("Verdes")
             return
 
         } else if ((casas[0].innerHTML) && (casas[3].innerHTML) && (casas[8].innerHTML)
             && (casas[0].className == "Casa Casa2") && (casas[3].className == "Casa Casa2") && (casas[8].className == "Casa Casa2")) {
-                
+
             jogarN("Verdes")
             return
 
         } else if ((casas[1].innerHTML) && (casas[6].innerHTML) && (casas[12].innerHTML)
             && (casas[1].className == "Casa Casa2") && (casas[6].className == "Casa Casa2") && (casas[12].className == "Casa Casa2")) {
-                
+
             jogarN("Verdes")
             return
 
         } else if ((casas[4].innerHTML) && (casas[10].innerHTML) && (casas[15].innerHTML)
             && (casas[4].className == "Casa Casa2") && (casas[10].className == "Casa Casa2") && (casas[15].className == "Casa Casa2")) {
-                
+
             jogarN("Verdes")
             return
 
             //para as pretas
         } else if ((casas[2].innerHTML) && (casas[5].innerHTML) && (casas[9].innerHTML)
             && (casas[2].className == "Casa") && (casas[5].className == "Casa") && (casas[9].className == "Casa")) {
-                
+
             jogarN("Pretas")
             return
 
         } else if ((casas[7].innerHTML) && (casas[11].innerHTML) && (casas[14].innerHTML)
             && (casas[7].className == "Casa") && (casas[11].className == "Casa") && (casas[14].className == "Casa")) {
-                
+
             jogarN("Pretas")
             return
 
         } else if ((casas[13].innerHTML) && (casas[16].innerHTML) && (casas[17].innerHTML)
             && (casas[13].className == "Casa") && (casas[16].className == "Casa") && (casas[17].className == "Casa")) {
-                
+
             jogarN("Pretas")
             return
 
         } else if ((casas[2].innerHTML) && (casas[7].innerHTML) && (casas[13].innerHTML)
             && (casas[2].className == "Casa") && (casas[7].className == "Casa") && (casas[13].className == "Casa")) {
-                
+
             jogarN("Pretas")
             return
 
         } else if ((casas[5].innerHTML) && (casas[11].innerHTML) && (casas[16].innerHTML)
             && (casas[5].className == "Casa") && (casas[11].className == "Casa") && (casas[16].className == "Casa")) {
-                
+
             jogarN("Pretas")
             return
 
         } else if ((casas[9].innerHTML) && (casas[14].innerHTML) && (casas[17].innerHTML)
             && (casas[9].className == "Casa") && (casas[14].className == "Casa") && (casas[17].className == "Casa")) {
-                
+
             jogarN("Pretas")
             return
 

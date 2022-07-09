@@ -5,66 +5,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="short icon" href="images/icon.ico"/>
+    <link rel="short icon" href="images/icon.ico" />
     <link rel="stylesheet" href="assets/css/visualTabuleiro.css">
     <title>Estarolas</title>
 </head>
+
 <body>
     <audio src="audio/win.mp3" id="win"></audio>
     <audio src="audio/move.m4a" id="move"></audio>
-    <button class="back" onclick="back()">Voltar</button>
-    <button id="showH" onclick="showH()">Mostrar Historico de jogadas</button>
-    <div id="divhistorico" style="display: none;">
-        <table class="historico">
-            <tbody id="innertable">
-                <tr>
-                    <th>Turnos</th>
-                    <th>Jogadas</th>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="Matriz">
-        <div class="Linha" id="1">
-            <div class="Casa Casa2" id="0" t="0">
-                <circle class="verdes" />
-            </div>
+    <div id="all">
+        <div id="botoes" style="display: none;">
+            <button class="back" onclick="back()">Voltar</button>
+            <button id="showH" onclick="showH()">Mostrar Historico de jogadas</button>
         </div>
-        <div class="Linha" id="2">
-            <div class="Casa Casa2" id="1" t="0"></div>
-            <div class="Casa" id="2" t="0">
-                <circle class="pretas" />
-            </div>
-            <div class="Casa Casa2" id="3" t="0"></div>
+        <div id="divhistorico" style="display: none;">
+            <table class="historico">
+                <tbody id="innertable">
+                    <tr>
+                        <th>Turnos</th>
+                        <th>Jogadas</th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="Linha" id="3">
-            <div class="Casa Casa2" id="4" t="0"></div>
-            <div class="Casa" id="5" t="0"></div>
-            <div class="Casa Casa2" id="6" t="0">
-                <circle class="verdes" />
-            </div>
-            <div class="Casa" id="7" t="0"></div>
-            <div class="Casa Casa2" id="8" t="0"></div>
-        </div>
-        <div class="Linha" id="4">
-            <div class="Casa" id="9" t="0"></div>
-            <div class="Casa Casa2" id="10" t="0"></div>
-            <div class="Casa" id="11" t="0">
-                <circle class="pretas" />
-            </div>
-            <div class="Casa Casa2" id="12" t="0"></div>
-            <div class="Casa" id="13" t="0"></div>
-        </div>
-        <div class="Linha" id="5">
-            <div class="Casa" id="14" t="0"></div>
-            <div class="Casa Casa2" id="15" t="0">
-                <circle class="verdes" />
-            </div>
-            <div class="Casa" id="16" t="0"></div>
-        </div>
-        <div class="Linha" id="6">
-            <div class="Casa" id="17" t="0">
-                <circle class="pretas" />
+        <div id="PreMatriz">
+            <button id="config" onclick="showO()"><img src="images/button.png" alt="error"></button>
+            <div class="Matriz">
+                <div class="Linha" id="1">
+                    <div class="Casa Casa2" id="0" t="0">
+                        <circle class="verdes" />
+                    </div>
+                </div>
+                <div class="Linha" id="2">
+                    <div class="Casa Casa2" id="1" t="0"></div>
+                    <div class="Casa" id="2" t="0">
+                        <circle class="pretas" />
+                    </div>
+                    <div class="Casa Casa2" id="3" t="0"></div>
+                </div>
+                <div class="Linha" id="3">
+                    <div class="Casa Casa2" id="4" t="0"></div>
+                    <div class="Casa" id="5" t="0"></div>
+                    <div class="Casa Casa2" id="6" t="0">
+                        <circle class="verdes" />
+                    </div>
+                    <div class="Casa" id="7" t="0"></div>
+                    <div class="Casa Casa2" id="8" t="0"></div>
+                </div>
+                <div class="Linha" id="4">
+                    <div class="Casa" id="9" t="0"></div>
+                    <div class="Casa Casa2" id="10" t="0"></div>
+                    <div class="Casa" id="11" t="0">
+                        <circle class="pretas" />
+                    </div>
+                    <div class="Casa Casa2" id="12" t="0"></div>
+                    <div class="Casa" id="13" t="0"></div>
+                </div>
+                <div class="Linha" id="5">
+                    <div class="Casa" id="14" t="0"></div>
+                    <div class="Casa Casa2" id="15" t="0">
+                        <circle class="verdes" />
+                    </div>
+                    <div class="Casa" id="16" t="0"></div>
+                </div>
+                <div class="Linha" id="6">
+                    <div class="Casa" id="17" t="0">
+                        <circle class="pretas" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
