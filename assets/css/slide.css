@@ -20,7 +20,7 @@
 
 .slides {
     overflow-y: auto;
-        max-height: auto;
+    max-height: auto;
     display: flex;
     width: 400%;
     height: 350px;
@@ -51,6 +51,7 @@
     cursor: pointer;
     gap: 5px;
     transition: 1s;
+    background-color: azure;
 }
 
 .manual-btn:not(:last-child) {
@@ -94,12 +95,6 @@ p {
     border-color: aquamarine;
 }
 
-img {
-    position: relative;
-    width: 100px;
-    height: 100px;
-}
-
 #imagemsobrepor{ 
     gap: 10px;
     display: flex;
@@ -113,8 +108,8 @@ img {
     flex-direction: row;
 }
 
-#gif{
-    position: relative;
+img{
+    margin: 20px;
     width: 200px;
     height: 200px;
 }
