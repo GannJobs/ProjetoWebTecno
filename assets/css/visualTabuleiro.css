@@ -165,12 +165,13 @@ span {
     color: rgb(231, 231, 231);
     display: flex;
     text-align: center;
-    background-color: rgb(13, 179, 13);
+    background-color: rgb(14, 146, 14);
     border-radius: 100%;
     width: 35px;
     height: 35px;
     justify-content: center;
     align-items: center;
+    font-weight: bolder;
 }
 
 /* tela especifica para mobile */

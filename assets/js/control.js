@@ -60,7 +60,7 @@ ChamarApi()
 let casas = document.getElementsByClassName("Casa")
 let origem
 
-let c = 0, jogada, turn = 1
+let c = 0, jogada, turn = 1, t = 0, aux
 
 function Playmove() {
     const audio = document.getElementById('move')
@@ -121,6 +121,7 @@ for (casa of casas) {
 
                 if (c == 0)
                     LimitMov(event)
+
                 turn++
 
             } else if (event.target.innerHTML) {
@@ -183,7 +184,7 @@ function sobrepor() {
                 '',
                 'success'
             )
-            r = true
+            r = result.isConfirmed
             if (r) {
 
                 Playmove()
@@ -192,25 +193,25 @@ function sobrepor() {
 
                     origem.setAttribute("t", turn)
                     origem.classList.toggle("sobreposto")
-                    turn++
                     origem = ""
 
                 } else {
 
                     origem.setAttribute("t", turn)
                     origem.classList.toggle("sobreposto")
-                    turn++
                     origem = ""
 
                 }
 
-                jogada = "Sobreposição"
                 Historico()
+                jogada = "Sobreposição"
+
             }
 
         } else {
 
-            turn--
+            t = 1
+            indicarTurno()
             origem = ""
             return
 
@@ -220,29 +221,44 @@ function sobrepor() {
 
 function indicarTurno() {
     let bola = document.querySelector('span')
-    bola.innerHTML = turn + 1
-    if(turn % 2 == 0){
-        bola.style = "background-color: rgb(13, 179, 13);"
-    }else{
-        bola.style = "background-color: rgb(44, 39, 39);"
+    if (t == 1) {
+        console.log("So entra se cancelar")
+        bola.innerHTML = turn
+        if (turn % 2 == 1) {
+            bola.style = "background-color: rgb(13, 179, 13);"
+            t = 0
+            return
+        } else {
+            bola.style = "background-color: rgb(44, 39, 39);"
+            t = 0
+            return
+        }
+    } else {
+        console.log("Sempre entra")
+        bola.innerHTML = turn + 1
+        if (turn % 2 == 0) {
+            bola.style = "background-color: rgb(13, 179, 13);"
+            return
+        } else {
+            bola.style = "background-color: rgb(44, 39, 39);"
+            return
+        }
     }
 }
 
 function Turn(event) {
     if (turn % 2 == 1) {
-        console.log("Turno das verde, entrou aqui")
         if ((origem.className == "Casa Casa2" || origem.className == "Casa sobreposto")
             && (event.target.className == "Casa Casa2" || event.target.className == "Casa sobreposto")) {
-            console.log("jogada permitida")
+                console.log("chamo no turno")
             indicarTurno()
             return
         } else if (origem.id == event.target.id) {
-            console.log("permitiu a sobreposição")
+            console.log("chamo no turno")
             indicarTurno()
             return
         } else if (origem.className == "Casa" || origem.className == "Casa Casa2 sobreposto") {
             c = 1
-            console.log("tem que falar que o turno é do oponente")
             origem = ""
             turn--
             return Swal.fire(
@@ -253,19 +269,17 @@ function Turn(event) {
         }
 
     } else if (turn % 2 == 0) {
-        console.log("Turno das pretas, entrou aqui")
         if ((origem.className == "Casa" || origem.className == "Casa Casa2 sobreposto")
             && (event.target.className == "Casa" || event.target.className == "Casa Casa2 sobreposto")) {
-            console.log("jogada permitida")
+                console.log("chamo no turno")
             indicarTurno()
             return
         } else if (origem.id == event.target.id) {
-            console.log("permitiu a sobreposição")
+            console.log("chamo no turno")
             indicarTurno()
             return
         } else if (origem.className == "Casa Casa2" || origem.className == "Casa sobreposto") {
             c = 1
-            console.log("tem que falar que o turno é do oponente")
             origem = ""
             turn--
             return Swal.fire(
@@ -332,19 +346,19 @@ function movimento(event) {
     //Movimentação das verdes em casas normais e sobrepostas
     if (origem.className == "Casa Casa2" && event.target.className == "Casa Casa2") {
 
-        jogada = "verde normal"
+        jogada = "verde => Verde"
         movV(event)
 
     } else if (origem.className == "Casa Casa2" && ((event.target.className == "Casa sobreposto")
         || event.target.className == "Casa Casa2")) {
 
-        jogada = "Verde => Preta->Verde"
+        jogada = "Verde => Preta Sobreposta"
         movV(event)
 
     } else if (origem.className == "Casa sobreposto" && ((event.target.className == "Casa Casa2")
         || (event.target.className == "Casa sobreposto"))) {
 
-        jogada = "Preta->Verde => Preta->Verde || Verde"
+        jogada = "Preta Sobreposta => Preta Sobreposta ou Verde"
         movV(event)
 
     } else
@@ -352,22 +366,23 @@ function movimento(event) {
         //Movimentação das pretas em casas normais e sobrepostas
         if (origem.className == "Casa" && event.target.className == "Casa") {
 
-            jogada = "preta normal"
+            jogada = "Preta => Preta"
             movP(event)
 
         } else if (origem.className == "Casa" && ((event.target.className == "Casa Casa2 sobreposto")
             || (event.target.className == "Casa"))) {
 
-            jogada = "Preta => Verde->Preta"
+            jogada = "Preta => Verde Sobreposta"
             movP(event)
 
         } else if (origem.className == "Casa Casa2 sobreposto" && ((event.target.className == "Casa")
             || (event.target.className == "Casa Casa2 sobreposto"))) {
 
-            jogada = "Verde->Preta => Verde->Preta || Preta"
+            jogada = "Verde Sobreposta => Verde Sobreposta ou Verde Sobreposta"
             movP(event)
 
         } else {
+
             turn--
             origem = ""
             return Swal.fire({
