@@ -13,8 +13,7 @@
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
-    /* background-color: rgb(192, 214, 207); */
-    background-color: aquamarine;
+    background-color: rgb(128, 223, 191);
     border-radius: 10px;
 }
 
@@ -31,7 +30,7 @@
 }
 
 .slide {
-    background-color: aquamarine;
+    background-color: rgb(128, 223, 191);
     width: 25%;
     position: relative;
 }
