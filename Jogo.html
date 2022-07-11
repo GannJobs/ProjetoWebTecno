@@ -11,12 +11,13 @@
 </head>
 
 <body>
+    <img src="images/confetti-4.gif" alt="" style="display: none;" id="backwin">
     <audio src="audio/win.mp3" id="win"></audio>
     <audio src="audio/move.m4a" id="move"></audio>
     <div id="all">
         <div id="botoes" style="display: none;">
             <button class="back" onclick="back()">Voltar</button>
-            <button id="showH" onclick="showH()">Mostrar Historico de jogadas</button>
+            <button id="showH" onclick="showData(1)">Mostrar Historico de jogadas</button>
         </div>
         <div id="divhistorico" style="display: none;">
             <table class="historico">
@@ -29,7 +30,7 @@
             </table>
         </div>
         <div id="PreMatriz">
-            <button id="config" onclick="showO()"><img src="images/button.png" alt="error"></button>
+            <button id="config" onclick="showData(2)"><img src="images/button.png" alt="error"></button>
             <div class="Matriz">
                 <div class="Linha" id="1">
                     <div class="Casa Casa2" id="0" t="0">

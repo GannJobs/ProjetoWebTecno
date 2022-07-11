@@ -62,9 +62,14 @@ let origem
 
 let c = 0, jogada, turn = 1, t = 0, aux
 
-function Playmove() {
-    const audio = document.getElementById('move')
-    audio.play()
+function Playaudio(a) {
+    if(a == 1) {
+        const audio = document.getElementById('move')
+        audio.play()
+    } else {
+        const audio = document.getElementById('win')
+        audio.play()
+    }
 }
 
 for (casa of casas) {
@@ -150,20 +155,20 @@ function Historico() {
     td_turn.innerText = turn
 }
 
-function showH() {
-    let a = document.getElementById("divhistorico")
-    if (a.getAttribute("style") == "display: none;")
-        a.setAttribute("style", "")
-    else
-        a.setAttribute("style", "display: none;")
-}
-
-function showO() {
-    let b = document.getElementById("botoes")
-    if (b.getAttribute("style") == "display: none;")
-        b.setAttribute("style", "display: flex;")
-    else
-        b.setAttribute("style", "display: none;")
+function showData(a) {
+    if (a == 1) {
+        let a = document.getElementById("divhistorico")
+        if (a.getAttribute("style") == "display: none;")
+            a.setAttribute("style", "")
+        else
+            a.setAttribute("style", "display: none;")
+    } else {
+        let b = document.getElementById("botoes")
+        if (b.getAttribute("style") == "display: none;")
+            b.setAttribute("style", "display: flex;")
+        else
+            b.setAttribute("style", "display: none;")
+    }
 }
 
 function sobrepor() {
@@ -187,7 +192,7 @@ function sobrepor() {
             r = result.isConfirmed
             if (r) {
 
-                Playmove()
+                Playaudio(1)
 
                 if (origem.getAttribute("t") == 0) {
 
@@ -293,7 +298,7 @@ function Turn(event) {
 
 function mov(evento) {
     Historico()
-    Playmove()
+    Playaudio(1)
     evento.target.innerHTML = origem.innerHTML
     origem.innerHTML = ""
     origem = null
@@ -479,13 +484,14 @@ function LimitMov(evento) {
     }
 }
 
-function Playsong() {
-    const audio = document.getElementById('win')
-    audio.play()
+function back() {
+    backgroundwin = document.getElementById("backwin")
+    backgroundwin.style = "display: block; margin-top:20vh;"
 }
 
 function jogarN(vencedor) {
-    Playsong()
+    back()
+    Playaudio(2)
     casas = ""
     Swal.fire({
         title: 'As ' + vencedor + ' ganharam!',
