@@ -484,13 +484,13 @@ function LimitMov(evento) {
     }
 }
 
-function back() {
+function backwin() {
     backgroundwin = document.getElementById("backwin")
     backgroundwin.style = "display: block; margin-top:20vh;"
 }
 
 function jogarN(vencedor) {
-    back()
+    backwin()
     Playaudio(2)
     casas = ""
     Swal.fire({
