@@ -190,6 +190,7 @@ function sobrepor() {
                 'success'
             )
             r = result.isConfirmed
+            turn++
             if (r) {
 
                 Playaudio(1)
@@ -208,8 +209,8 @@ function sobrepor() {
 
                 }
 
-                Historico()
                 jogada = "Sobreposição"
+                Historico()
 
             }
 
@@ -351,7 +352,7 @@ function movimento(event) {
     //Movimentação das verdes em casas normais e sobrepostas
     if (origem.className == "Casa Casa2" && event.target.className == "Casa Casa2") {
 
-        jogada = "verde => Verde"
+        jogada = "Verde => Verde"
         movV(event)
 
     } else if (origem.className == "Casa Casa2" && ((event.target.className == "Casa sobreposto")
