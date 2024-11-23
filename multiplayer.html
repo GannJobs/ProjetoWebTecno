@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="short icon" href="images/icon.ico" />
     <link rel="stylesheet" href="assets/css/visualTabuleiro.css">
-    <title>Estarolas</title>
+    <title>Estarolas Multiplayer</title>
 </head>
 
 <body>
@@ -16,8 +16,8 @@
     <audio src="audio/move.m4a" id="move"></audio>
     <div id="all">
         <div id="botoes" style="display: none;">
-            <button class="back" onclick="back()">Voltar</button>
-            <button id="showH" onclick="showData(1)">Mostrar Historico de jogadas</button>
+            <button class="back" onclick="sair()">Sair</button>
+            <button id="showH" onclick="showData(1)">Mostrar Histórico de Jogadas</button>
         </div>
         <div id="divhistorico" style="display: none;">
             <table class="historico">
@@ -78,7 +78,7 @@
             <span>1</span>
         </div>
     </div>
-    <script src="assets/js/control.js"></script>
+    <script type="module" src="assets/js/multiplayer.js"></script>
 </body>
 
 </html>
